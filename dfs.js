@@ -1,7 +1,7 @@
 "use strict"
 
 // performs a BFS search: draws the progress and the solution
-const searchDFS = async (grid, nrows, ncols) => {
+const searchDFS = async (grid, nrows, ncols, mazeIndex) => {
 	let parents = initializeParents(nrows, ncols);
 
 	const bfs = async (parent, vertex, parents) => {
@@ -18,7 +18,7 @@ const searchDFS = async (grid, nrows, ncols) => {
 			return false;
 		}
 
-		setCellColour(vertex.i, vertex.j, colours.visiting);
+		setCellColour(mazeIndex, vertex.i, vertex.j, colours.visiting);
 
 		await sleep(15);
 
@@ -62,10 +62,10 @@ const searchDFS = async (grid, nrows, ncols) => {
 			}
 		}
 
-		setCellColour(vertex.i, vertex.j, colours.visited);
+		setCellColour(mazeIndex, vertex.i, vertex.j, colours.visited);
 	}
 
 	// Start the BFS from the terminal node going into the initial node
 	await bfs({i : TERMINAL_NODE, j : TERMINAL_NODE}, {i : 0, j : 0}, parents);
-	await drawPath(parents, nrows, ncols);
+	await drawPath(mazeIndex, parents, nrows, ncols);
 }
