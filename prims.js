@@ -91,6 +91,9 @@ const applyPrimsToMaze = async (maze) => {
 			continue;
 		}
 
+		// mark the new vertex as part of the MST
+		included[toRow][toCol] = true;
+
 		// generates the four possible edges
 		const northbound = {
 			to: 	vertex.to - numcols,
@@ -144,27 +147,26 @@ const applyPrimsToMaze = async (maze) => {
 		maze[fromRow][fromCol][vertex.dir]	= false;
 
 		// remove the newly deleted walls
-		updateCell(mazeTable, genCell(maze[toRow][toCol]), toRow, toCol);
-		updateCell(mazeTable, genCell(maze[fromRow][fromCol]), fromRow, fromCol);
+		updateCell(mazeTable, genCell(maze[toRow][toCol], toRow, toCol), toRow, toCol);
+		updateCell(mazeTable, genCell(maze[fromRow][fromCol], fromRow, fromCol), fromRow, fromCol);
 
-		await sleep(timeoutInterval)
-
-		// mark the new vertex as part of the MST
-		included[toRow][toCol] = true;
+		// await sleep(timeoutInterval);
 	}
 
 	return maze;
 }
 
 // generates a maze and then applies prims
-const randomPrims = (nrows, ncols) => {
+const randomPrims = async (nrows, ncols) => {
 	const maze = genRandomWeights(nrows, ncols);
 	maze[0][0].n = false;
 	maze[numrows-1][numcols-1].s = false;
 
 	document.body.insertBefore(genMazeTable(maze), document.body.firstChild);
 
-	return applyPrimsToMaze(maze);
+	return await applyPrimsToMaze(maze);//.then(() => maze);
+
+	// return maze;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */

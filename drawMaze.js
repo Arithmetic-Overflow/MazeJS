@@ -7,13 +7,21 @@ const genBorderStyle = (gridCell, direction) => {
 
 
 // generates a cell with the specified style
-const genCell = (gridCell) => {
+const genCell = (gridCell, nrow, ncol) => {
 	const tableCell = document.createElement("td");
 
-	tableCell.style["borderTop"]	= genBorderStyle(gridCell, 'n');
+	// console.log('col')
+
+	if(nrow == 0) {
+		tableCell.style["borderTop"]	= genBorderStyle(gridCell, 'n');
+	}
+
 	tableCell.style["borderRight"]	= genBorderStyle(gridCell, 'e');
 	tableCell.style["borderBottom"]	= genBorderStyle(gridCell, 's');
-	tableCell.style["borderLeft"]	= genBorderStyle(gridCell, 'w');
+
+	if(ncol == 0) {
+		tableCell.style["borderLeft"]	= genBorderStyle(gridCell, 'w');
+	}
 
 	tableCell.classList.add("maze-cell");
 
@@ -22,11 +30,13 @@ const genCell = (gridCell) => {
 
 
 // generate a table row to append to the table
-const genRow = (gridRow) => {
+const genRow = (gridRow, nrow) => {
 	const tableRow = document.createElement("tr");
 
+	// console.log('row')
+
 	gridRow.map(
-		(cell) => tableRow.appendChild(genCell(cell))
+		(cell, ncol) => tableRow.appendChild(genCell(cell, nrow, ncol))
 	);
 
 	tableRow.classList.add("maze-row");
@@ -38,7 +48,7 @@ const genRow = (gridRow) => {
 const genMazeTable = (grid) => {
 	const table = document.createElement("table");
 	grid.map(
-		(row) => table.appendChild(genRow(row))
+		(row, nrow) => table.appendChild(genRow(row, nrow))
 	);
 
 	table.classList.add("maze");

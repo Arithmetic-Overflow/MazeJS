@@ -1,10 +1,12 @@
 /* ---------------------------------------------------- Global variables --------------------------------------------------- */
 
 // constant declarations
-const defaultBorderStyle = "2px solid #dedede";
-let numrows = 5;
-let numcols = 5;
+const defaultBorderStyle = "3px solid #dddddd";
+let numrows;
+let numcols;
 
-const timeoutInterval = 15;
+let cellSize = 50;
+
+const timeoutInterval = 1;
 
 /* ------------------------------------------------------------------------------------------------------------------------- */
