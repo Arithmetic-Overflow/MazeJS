@@ -20,8 +20,8 @@ td.maze-cell {
 	margin: 0;
 	/*width: 10px;*/
 	/*height: 10px;*/
-	min-width:  22px;
-	min-height: 22px;
-	max-width:  22px;
-	max-height: 22px;
+	min-width:  54px;
+	min-height: 54px;
+	max-width:  54px;
+	max-height: 54px;
 }

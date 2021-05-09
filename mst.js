@@ -15,21 +15,21 @@ const genRandomWeights = (nrows, ncols) => {
 const randomizeWeights = (maze) => {
 	const randWeight = () => randRange(1, 200);
 
-	for(let i = 0; i < numrows - 1; i++) {
-		for(let j = 0; j < numcols; j++) {
-			const w = randWeight();
-
-			maze[i][j].eWeight 		= w;
-			maze[i+1][j].wWeight 	= w;
-		}
-	}
-
 	for(let i = 0; i < numrows; i++) {
 		for(let j = 0; j < numcols - 1; j++) {
 			const w = randWeight();
 
-			maze[i][j].sWeight 		= w;
-			maze[i][j+1].nWeight 	= w;
+			maze[i][j].eWeight 		= w;
+			maze[i][j + 1].wWeight 	= w;
+		}
+	}
+
+	for(let i = 0; i < numrows - 1; i++) {
+		for(let j = 0; j < numcols; j++) {
+			const w = randWeight();
+
+			maze[i + 1][j].sWeight 	= w;
+			maze[i][j].nWeight 		= w;
 		}
 	}
 

@@ -35,9 +35,9 @@ const searchBFS = async (grid, nrows, ncols) => {
 		}
 
 		const mazeTable = document.getElementsByClassName("maze")[0];
-		mazeTable.children.item(vertex.i).children.item(vertex.j).style.backgroundColor = "#2222dd";
+		mazeTable.children.item(vertex.i).children.item(vertex.j).style.backgroundColor = "#dd22dd";
 
-		await sleep(20);
+		await sleep(15);
 
 		// only search unvisited cells
 		parents[vertex.i][vertex.j] = parent;
@@ -78,6 +78,8 @@ const searchBFS = async (grid, nrows, ncols) => {
 				return true;
 			}
 		}
+
+		mazeTable.children.item(vertex.i).children.item(vertex.j).style.backgroundColor = "#2222dd";
 	}
 
 	await bfs({i : -2, j : -2}, {i : 0, j : 0}, parents);
