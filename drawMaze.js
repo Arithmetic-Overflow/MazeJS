@@ -10,14 +10,12 @@ const genBorderStyle = (gridCell, direction) => {
 const genCell = (gridCell, nrow, ncol) => {
 	const tableCell = document.createElement("td");
 
-	// console.log('col')
-
 	if(nrow == 0) {
 		tableCell.style["borderTop"]	= genBorderStyle(gridCell, 'n');
 	}
 
-	tableCell.style["borderRight"]	= genBorderStyle(gridCell, 'e');
-	tableCell.style["borderBottom"]	= genBorderStyle(gridCell, 's');
+	tableCell.style["borderRight"]		= genBorderStyle(gridCell, 'e');
+	tableCell.style["borderBottom"]		= genBorderStyle(gridCell, 's');
 
 	if(ncol == 0) {
 		tableCell.style["borderLeft"]	= genBorderStyle(gridCell, 'w');

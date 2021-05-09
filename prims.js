@@ -1,3 +1,5 @@
+"use strict"
+
 /* ------------------------------------------------ Running Prim's algorithm ----------------------------------------------- */
 
 // removes walls to make a path along the MST of the maze using prim's algorithm
@@ -150,7 +152,7 @@ const applyPrimsToMaze = async (maze) => {
 		updateCell(mazeTable, genCell(maze[toRow][toCol], toRow, toCol), toRow, toCol);
 		updateCell(mazeTable, genCell(maze[fromRow][fromCol], fromRow, fromCol), fromRow, fromCol);
 
-		await sleep(10);
+		// await sleep(10);
 	}
 
 	return maze;

@@ -1,12 +1,26 @@
 "use strict"
 
 const colours = {
-	visited		: "#2222dd",
-	visiting 	: "#dd22dd",
-	solution	: "#22dd22"
+	visited		: "#bd28bd",
+	visiting 	: "#3da4a8",
+	solution	: "#0be00b"
 };
 
 const TERMINAL_NODE = -2;
+
+const makeVertex = (i, j) => ({i: i, j: j});
+
+// returns an nrows x ncols array with {i:-1, j:-1}
+const initializeParents = (nrows, ncols) => {
+	return 	(
+		Array(nrows)
+			.fill(0)
+			.map(
+				() => 	Array(ncols)
+							.fill({i : -1, j : -1})
+			)
+	);
+}
 
 // retrieves a cell from the maze and sets it to the given colour
 const setCellColour = (row, column, colour) => {
@@ -28,16 +42,4 @@ const drawPath = async (parents, nrows, ncols) => {
 		setCellColour(v.i, v.j, colours.solution);
 		await sleep(5);
 	}
-}
-
-// returns an nrows x ncols array with {i:-1, j:-1}
-const initializeParents = (nrows, ncols) => {
-	return 	(
-		Array(nrows)
-			.fill(0)
-			.map(
-				() => 	Array(ncols)
-							.fill({i : -1, j : -1})
-			)
-	);
 }

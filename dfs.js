@@ -1,11 +1,10 @@
+"use strict"
+
 // performs a BFS search: draws the progress and the solution
-const searchBFS = async (grid, nrows, ncols) => {
+const searchDFS = async (grid, nrows, ncols) => {
 	let parents = initializeParents(nrows, ncols);
 
-	const makeVertex = (i, j) => ({i: i, j: j});
-
 	const bfs = async (parent, vertex, parents) => {
-		// console.log(parent, vertex)
 		if(vertex.i < 0 || vertex.i >= nrows) {
 			return false;
 		}
@@ -13,8 +12,8 @@ const searchBFS = async (grid, nrows, ncols) => {
 		if(vertex.j < 0 || vertex.j >= ncols) {
 			return false;
 		}
-		const parentOfVertex = parents[vertex.i][vertex.j];
 
+		const parentOfVertex = parents[vertex.i][vertex.j];
 		if(parentOfVertex.i != -1 && parentOfVertex.j != -1) {
 			return false;
 		}
