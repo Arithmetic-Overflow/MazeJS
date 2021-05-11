@@ -6,7 +6,7 @@ body {
 table.maze {
 	float: left;
 	display: grid;
-	margin: 80px 110px 80px 110px;
+	margin: 38px 40px 38px 40px;
 }
 
 td.maze-cell {

@@ -4,7 +4,7 @@
 
 // removes walls to make a path along the MST of the maze using prim's algorithm
 const applyPrimsToMaze = async (maze) => {
-	const pq = buckets.PriorityQueue(((x, y) => x.w - y.w));
+	const pq = buckets.PriorityQueue((x, y) => x.w - y.w);
 	let included = 	Array(numrows)
 						.fill(0)
 						.map(

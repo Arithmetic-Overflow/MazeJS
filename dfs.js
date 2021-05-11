@@ -1,6 +1,7 @@
 "use strict"
 
 // performs a BFS search: draws the progress and the solution
+// doesn't necessarily find the optimal solution: just finds a valid solution
 const searchDFS = async (grid, nrows, ncols, mazeIndex) => {
 	let parents = initializeParents(nrows, ncols);
 
@@ -20,7 +21,7 @@ const searchDFS = async (grid, nrows, ncols, mazeIndex) => {
 
 		setCellColour(mazeIndex, vertex.i, vertex.j, colours.visiting);
 
-		await sleep(15);
+		await sleep(8);
 
 		// only search unvisited cells
 		parents[vertex.i][vertex.j] = parent;

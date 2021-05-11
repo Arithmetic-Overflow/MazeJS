@@ -29,7 +29,7 @@ const setCellColour = (mazeIndex, row, column, colour) => {
 }
 
 // draws the path from the end to the start of the maze by tracing the parents until the origin
-const drawPath = async (mazeIndex, parents, nrows, ncols) => {
+const drawPath = async (mazeIndex, parents, nrows, ncols, colour = colours.solution, sleepTime = 5) => {
 	let path = Array();
 	let p = {i : nrows - 1, j : ncols - 1};
 	while(p.i != TERMINAL_NODE && p.j != TERMINAL_NODE) {
@@ -39,7 +39,9 @@ const drawPath = async (mazeIndex, parents, nrows, ncols) => {
 
 	const mazeTable = document.getElementsByClassName("maze")[mazeIndex];
 	for(let v of path) {
-		setCellColour(mazeIndex, v.i, v.j, colours.solution);
-		await sleep(5);
+		setCellColour(mazeIndex, v.i, v.j, colour);
+		if(sleepTime !== 0) {
+			await sleep(5);
+		}
 	}
 }
