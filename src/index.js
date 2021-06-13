@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// let buckets = require("buckets-js")
+// let a = new buckets.Set()
+// a.add(2)
+// a.add(2)
+// a.add(3)
+// console.log(a.size())
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <h1>
+      hello
+    </h1>
   </React.StrictMode>,
   document.getElementById('root')
 );
