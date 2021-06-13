@@ -2,19 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
-// let buckets = require("buckets-js")
-// let a = new buckets.Set()
-// a.add(2)
-// a.add(2)
-// a.add(3)
-// console.log(a.size())
-
+import Maze from "./Maze"
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>
-      hello
-    </h1>
+    <Maze grid={[[1, 2, 6], [3, 4, 2], [5, 6, 7]]} />
+
+    <table className="maze">
+      <tbody>
+        <tr>
+          <td className="maze-cell"> 1 </td>
+          <td className="maze-cell"> 2 </td>
+        </tr>
+      </tbody>
+    </table>
   </React.StrictMode>,
   document.getElementById('root')
 );
